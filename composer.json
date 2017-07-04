@@ -3,7 +3,7 @@
   "description": "Zongphp Framework (Kernel)",
   "license": "MIT",
   "type": "project",
-  "minimum-stability": "dev",
+  "minimum-stability": "stable",
   "require": {
     "php": ">=5.4.0",
     "zongphp/alipay": "~1.0",
@@ -15,7 +15,7 @@
     "zongphp/code": "~1.0",
     "zongphp/collection": "~1.0",
     "zongphp/config": "~1.0",
-	"zongphp/oss": "dev-master",
+	"zongphp/oss": "~1.0",
     "zongphp/container": "~1.0",
     "zongphp/controller": "~1.0",
     "zongphp/cookie": "~1.0",
