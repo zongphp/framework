@@ -334,3 +334,22 @@ if ( ! function_exists( 'csrf_token' ) ) {
 		return Session::get( 'csrf_token' );
 	}
 }
+
+if (!function_exists('getallheaders'))
+{
+	/**
+	 * 修复在Nginx环境下hetallheaders()丢失
+	 */
+		function getallheaders()
+    {
+           $headers = [];
+       foreach ($_SERVER as $name => $value)
+       {
+           if (substr($name, 0, 5) == 'HTTP_')
+           {
+               $headers[str_replace(' ', '-', ucwords(strtolower(str_replace('_', ' ', substr($name, 5)))))] = $value;
+           }
+       }
+       return $headers;
+    }
+}
