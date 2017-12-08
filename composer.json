@@ -49,7 +49,8 @@
     "zongphp/wechat": "~1.0",
     "zongphp/loader": "~1.0",
     "zongphp/qrcode": "~1.0",
-    "zongphp/aliyunsms": "~1.0"
+    "zongphp/aliyunsms": "~1.0",
+    "zongphp/tree": "~1.0"
   },
   "autoload": {
     "files": [
