@@ -46,7 +46,6 @@
     "zongphp/view": "~1.0",
     "zongphp/xml": "~1.0",
     "zongphp/zip": "~1.0",
-    "zongphp/wechat": "~1.0",
     "zongphp/loader": "~1.0",
     "zongphp/qrcode": "~1.0",
     "zongphp/aliyunsms": "~1.0",
