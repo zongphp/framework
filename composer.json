@@ -45,7 +45,7 @@
     "zongphp/zip": "~2.0",
     "zongphp/loader": "~2.0",
     "zongphp/qrcode": "~2.0",
-    "zongphp/alipay": "~2.0",
+    "zongphp/alipay": "~2.0"
   },
   "autoload": {
     "files": [
