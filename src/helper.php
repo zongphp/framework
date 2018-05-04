@@ -251,7 +251,7 @@ if ( ! function_exists( 'message' ) ) {
 	 */
 	function message( $content, $redirect = 'back', $type = 'success', $timeout = 2 ) {
 		if ( IS_AJAX ) {
-			ajax( [ 'valid' => $type == 'success' ? 1 : 0, 'message' => $content ] );
+			ajax( [ 'code' => $type == 'success' ? 1 : 0, 'msg' => $content ] );
 		} else {
 			switch ( $redirect ) {
 				case 'with':
