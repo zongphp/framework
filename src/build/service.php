@@ -14,7 +14,6 @@ return [
 		'zongphp\cache\CacheProvider',
 		'zongphp\validate\ValidateProvider',
 		'zongphp\log\LogProvider',
-		'zongphp\alipay\AliPayProvider',
 		'zongphp\collection\CollectionProvider',
 		'zongphp\db\DbProvider',
 		'zongphp\database\SchemaProvider',
@@ -22,7 +21,6 @@ return [
 		'zongphp\response\ResponseProvider',
 		'zongphp\cookie\CookieProvider',
 		'zongphp\xml\XmlProvider',
-		'zongphp\qq\QqProvider',
 		'zongphp\tree\TreeProvider',
 		'zongphp\curl\CurlProvider',
 		'zongphp\dir\DirProvider',
@@ -39,9 +37,7 @@ return [
 		'zongphp\arr\ArrProvider',
 		'zongphp\str\StrProvider',
 		'zongphp\zip\ZipProvider',
-		'zongphp\page\PageProvider',
-		'zongphp\cart\CartProvider',
-		'zongphp\qrcode\QrCodeProvider',
+		'zongphp\page\PageProvider'
 	],
 
 	//服务外观
@@ -57,7 +53,6 @@ return [
 		'Route'      => 'zongphp\route\RouteFacade',
 		'Config'     => 'zongphp\config\ConfigFacade',
 		'Cli'        => 'zongphp\cli\CliFacade',
-		'AliPay'     => 'zongphp\alipay\AliPayFacade',
 		'Collection' => 'zongphp\collection\CollectionFacade',
 		'Db'         => 'zongphp\db\DbFacade',
 		'Schema'     => 'zongphp\database\SchemaFacade',
@@ -65,7 +60,6 @@ return [
 		'Response'   => 'zongphp\response\ResponseFacade',
 		'Cookie'     => 'zongphp\cookie\CookieFacade',
 		'Xml'        => 'zongphp\xml\XmlFacade',
-		'Qq'         => 'zongphp\qq\QqFacade',
 		'Middleware' => 'zongphp\middleware\MiddlewareFacade',
 		'Tree'       => 'zongphp\tree\TreeFacade',
 		'Curl'       => 'zongphp\curl\CurlFacade',
@@ -84,8 +78,6 @@ return [
 		'Arr'        => 'zongphp\arr\ArrFacade',
 		'Str'        => 'zongphp\str\StrFacade',
 		'Zip'        => 'zongphp\zip\ZipFacade',
-		'Page'       => 'zongphp\page\PageFacade',
-		'Cart'       => 'zongphp\cart\CartFacade',
-		'QrCode'     => 'zongphp\qrcode\QrCodeFacade',
+		'Page'       => 'zongphp\page\PageFacade'
 	]
 ];
