@@ -1,58 +1,29 @@
 {
-  "name": "zongphp/framework",
-  "description": "zongphp Framework (Kernel)",
-  "license": "MIT",
-  "minimum-stability": "stable",
-  "require": {
-    "php": ">=5.6.0",
-    "zongphp/arr": "~2.0",
-    "zongphp/backup": "~2.0",
-    "zongphp/cache": "~2.0",
-    "zongphp/cart": "~2.0",
-    "zongphp/cli": "~2.0",
-    "zongphp/code": "~2.0",
-    "zongphp/collection": "~2.0",
-    "zongphp/config": "~2.0",
-    "zongphp/oss": "~2.0",
-    "zongphp/container": "~2.0",
-    "zongphp/cookie": "~2.0",
-    "zongphp/crypt": "~2.0",
-    "zongphp/curl": "~2.0",
-    "zongphp/database": "~2.0",
-    "zongphp/db": "~2.0",
-    "zongphp/dir": "~2.0",
-    "zongphp/error": "~2.0",
-    "zongphp/file": "~2.0",
-    "zongphp/html": "~2.0",
-    "zongphp/image": "~2.0",
-    "zongphp/lang": "~2.0",
-    "zongphp/log": "~2.0",
-    "zongphp/mail": "~2.0",
-    "zongphp/middleware": "~2.0",
-    "zongphp/model": "~2.0",
-    "zongphp/page": "~2.0",
-    "zongphp/qq": "~2.0",
-    "zongphp/rbac": "~2.0",
-    "zongphp/request": "~2.0",
-    "zongphp/response": "~2.0",
-    "zongphp/route": "~2.0",
-    "zongphp/session": "~2.0",
-    "zongphp/str": "~2.0",
-    "zongphp/tool": "~2.0",
-    "zongphp/validate": "~2.0",
-    "zongphp/view": "~2.0",
-    "zongphp/xml": "~2.0",
-    "zongphp/zip": "~2.0",
-    "zongphp/loader": "~2.0",
-    "zongphp/qrcode": "~2.0",
-    "zongphp/alipay": "~2.0"
-  },
-  "autoload": {
-    "files": [
-      "src/helper.php"
+    "name": "zongphp/framework",
+    "description": "ZongPHP Framework",
+    "authors": [
+        {
+            "name": "ZongPHP",
+            "email": "zmingzhi@yeah.net"
+        }
     ],
-    "psr-4": {
-      "zongphp\\framework\\": "src"
-    }
-  }
+    "require": {
+        "php": ">=7.0",
+        "leafo/scssphp": "^0.1",
+        "nelexa/zip": "^3.0",
+        "intervention/image": "^2.0",
+        "ralouphie/mimey": "^2.0",
+        "endroid/qr-code": "^3.0",
+        "phpfastcache/phpfastcache": "^7.0",
+        "guzzlehttp/guzzle": "^6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "zongphp\\": "src/"
+        }
+    },
+    "keywords": [
+        "zongphp"
+    ],
+    "license": "Apache-2.0"
 }
