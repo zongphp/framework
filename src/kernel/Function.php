@@ -67,10 +67,10 @@ function isApi() {
 
 /**
  * 依赖注入
- * @return \dux\com\Di|null
+ * @return \zongphp\com\Di|null
  */
 function di() {
-    return \dux\Dux::di();
+    return \zongphp\App::di();
 }
 
 /**
@@ -198,7 +198,7 @@ function inRequest($data = []) {
  * @return array|mixed|string
  */
 function request($method = '', $key = '', $default = '', $function = '') {
-    return \dux\Dux::request($method, $key, $default, $function);
+    return \zongphp\App::request($method, $key, $default, $function);
 }
 
 /**
@@ -211,7 +211,7 @@ function request($method = '', $key = '', $default = '', $function = '') {
  * @return string
  */
 function url($str = '', $params = [], $domain = false, $ssl = true, $global = true) {
-    return \dux\Dux::url($str, $params, $domain, $ssl, $global);
+    return \zongphp\App::url($str, $params, $domain, $ssl, $global);
 }
 
 /**
@@ -221,14 +221,14 @@ function url($str = '', $params = [], $domain = false, $ssl = true, $global = tr
  * @return mixed
  */
 function target($class, $layer = 'model') {
-    return \dux\Dux::target($class, $layer);
+    return \zongphp\App::target($class, $layer);
 }
 
 /**
  * 简化类配置加载
  */
 function load_config($file, $enforce = true) {
-    return \dux\Dux::loadConfig($file, $enforce);
+    return \zongphp\App::loadConfig($file, $enforce);
 }
 
 /**
@@ -238,7 +238,7 @@ function load_config($file, $enforce = true) {
  * @return array|bool
  */
 function save_config($file, $config) {
-    return \dux\Dux::saveConfig($file, $config);
+    return \zongphp\App::saveConfig($file, $config);
 }
 
 /**
@@ -272,7 +272,7 @@ function array_sort($data, $key, $type = 'asc') {
  * @return mixed
  */
 function data_sign($data) {
-    $config = \dux\Config::get('dux.use');
+    $config = \zongphp\Config::get('zong.use');
     if (!is_array($data)) {
         $data = [
             'data' => $data,
@@ -299,7 +299,7 @@ function data_sign_has($data, $sign = '') {
     }
     $sign = url_base64_decode($sign);
     ksort($data);
-    $config = \dux\Config::get('dux.use');
+    $config = \zongphp\Config::get('zong.use');
     $valToken = hash_hmac('sha1', http_build_query($data), $config['safe_key'], true);
     return ($sign == $valToken);
 }
@@ -437,8 +437,8 @@ function hide_str($string, $start = 0, $length = 0, $re = '*') {
  * @return bool
  * @throws Exception
  */
-function dux_log($msg = '', $type = 'INFO', $fileName = '') {
-    return \dux\Dux::log($msg, $type, $fileName);
+function zong_log($msg = '', $type = 'INFO', $fileName = '') {
+    return \zongphp\App::log($msg, $type, $fileName);
 }
 
 /**
@@ -476,7 +476,7 @@ function date_tran($time) {
  * @return string
  */
 function html_in($html = '') {
-    return \dux\lib\Filter::filter()->htmlIn($html);
+    return \zongphp\library\Filter::filter()->htmlIn($html);
 
 }
 
@@ -486,7 +486,7 @@ function html_in($html = '') {
  * @return string
  */
 function html_out($str = '') {
-    return \dux\lib\Filter::filter()->htmlOut($str);
+    return \zongphp\library\Filter::filter()->htmlOut($str);
 }
 
 /**
@@ -495,7 +495,7 @@ function html_out($str = '') {
  * @return string
  */
 function html_clear($str = '') {
-    return \dux\lib\Filter::filter()->html($str);
+    return \zongphp\library\Filter::filter()->html($str);
 }
 
 /**
@@ -553,7 +553,7 @@ function str_len($str, $len = 20, $suffix = true) {
  * @return int|mixed
  */
 function int_format($str = 0) {
-    return \dux\lib\Filter::filter()->number($str);
+    return \zongphp\library\Filter::filter()->number($str);
 }
 
 /**
@@ -562,7 +562,7 @@ function int_format($str = 0) {
  * @return string
  */
 function price_format($money = 0) {
-    return \dux\lib\Filter::filter()->price($money);
+    return \zongphp\library\Filter::filter()->price($money);
 }
 
 /**
@@ -663,8 +663,8 @@ function build_scss($str) {
  * @return string
  */
 function load_ui($path = '', $cssLoad = true) {
-    $css = ROOT_URL . '/public/common/css/dux.css?v=1.0.9';
-    $js = ROOT_URL . '/public/common/js/dux.min.js?v=1.0.9';
+    $css = ROOT_URL . '/public/common/css/zong.css?v=1.0.9';
+    $js = ROOT_URL . '/public/common/js/zong.min.js?v=1.0.9';
     $data = [];
     if ($cssLoad) {
         $data[] = '<link rel="stylesheet" href="' . $css . '">' . "\r\n";

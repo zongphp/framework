@@ -1,6 +1,6 @@
 <?php
 
-namespace dux\com;
+namespace zongphp\com;
 
 /**
  * 日志类
@@ -20,7 +20,7 @@ class Log {
      */
     public function __construct($driver = 'default') {
         $this->driver = $driver;
-        $config = \dux\Config::get('dux.log_driver');
+        $config = \zongphp\Config::get('zong.log_driver');
         $this->config = $config[$this->driver];
         if (empty($this->config) || empty($this->driver)) {
             throw new \Exception($this->driver . ' log config error', 500);
@@ -59,7 +59,7 @@ class Log {
     }
 
     public function getObj() {
-        $key = 'dux.log_driver.' . $this->driver;
+        $key = 'zong.log_driver.' . $this->driver;
         if (!di()->has($key)) {
             $class = __NAMESPACE__ . '\log\\' . ucfirst($this->config['type']) . 'Driver';
             di()->set($key, function () use ($class) {

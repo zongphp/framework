@@ -4,7 +4,7 @@
  * Redis存储
  */
 
-namespace dux\com\log;
+namespace zongphp\com\log;
 
 class RedisDriver implements LogInterface {
 
@@ -82,7 +82,7 @@ class RedisDriver implements LogInterface {
     }
 
     public function getObj() {
-        return (new \dux\kernel\modelNo('default', $this->config))->getObj()->getLink();
+        return (new \zongphp\kernel\modelNo('default', $this->config))->getObj()->getLink();
     }
 
 }

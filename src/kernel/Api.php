@@ -4,7 +4,7 @@
  * 公共API
  */
 
-namespace dux\kernel;
+namespace zongphp\kernel;
 
 class Api {
 
@@ -28,14 +28,14 @@ class Api {
      */
     public function success($msg = '', $data = []) {
         if (empty($msg)) {
-            $msg = \dux\Dux::$codes[200];
+            $msg = \zongphp\App::$codes[200];
         }
         $data = [
             'code' => 200,
-            'message' => $msg,
-            'result' => $data,
+            'msg' => $msg,
+            'data' => $data,
         ];
-        \dux\Dux::header(200, function () use ($data) {
+        \zongphp\App::header(200, function () use ($data) {
             $this->returnData($data);
         });
     }
@@ -48,14 +48,14 @@ class Api {
      */
     public function error($msg = '', $code = 500, $url = '') {
         if (empty($msg)) {
-            $msg = \dux\Dux::$codes[$code];
+            $msg = \zongphp\App::$codes[$code];
         }
         $data = [
             'code' => $code,
-            'message' => $msg,
-            'url' => $url
+            'msg' => $msg,
+            'data' => $url
         ];
-        \dux\Dux::header(200, function () use ($data) {
+        \zongphp\App::header(200, function () use ($data) {
             $this->returnData($data);
         });
     }

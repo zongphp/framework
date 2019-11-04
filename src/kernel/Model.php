@@ -4,7 +4,7 @@
  * 公共模型
  */
 
-namespace dux\kernel;
+namespace zongphp\kernel;
 
 class Model {
 
@@ -34,7 +34,7 @@ class Model {
         if ($database) {
             $this->database = $database;
         }
-        $sysConfig = \dux\Config::get('dux.database');
+        $sysConfig = \zongphp\Config::get('zong.database');
         $this->config = array_merge((array)$sysConfig[$this->database], (array)$this->config, $config);
         if (empty($this->config) || empty($this->config['type'])) {
             throw new \Exception($this->config['type'] . ' database config error', 500);

@@ -2,7 +2,7 @@
 /**
  * 日志驱动接口
  */
-namespace dux\com\log;
+namespace zongphp\com\log;
 
 Interface LogInterface {
 

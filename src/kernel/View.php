@@ -3,7 +3,7 @@
  * 模板引擎
  */
 
-namespace dux\kernel;
+namespace zongphp\kernel;
 
 
 class View {
@@ -55,7 +55,7 @@ class View {
      */
     public function __construct($config = []) {
         $this->config = array_merge($this->config, $config);
-        $this->cache = \dux\Dux::cache('tpl', $this->config);
+        $this->cache = \zongphp\App::cache('tpl', $this->config);
         $this->set('__Template', $this);
 
     }
@@ -320,7 +320,7 @@ class View {
             $scss = new \Leafo\ScssPhp\Compiler();
             $html .= $scss->compile($var[3]);
         } elseif ($label == 'script') {
-            $packer = new \dux\vendor\Packer($var[3], 'Normal', true, false, true);
+            $packer = new \zongphp\vendor\Packer($var[3], 'Normal', true, false, true);
             $html .= $packer->pack();
         }else {
             $html .= $var[3];

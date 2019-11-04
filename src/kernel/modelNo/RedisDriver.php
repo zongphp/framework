@@ -5,7 +5,7 @@
  * @author: Mr.L
  */
 
-namespace dux\kernel\modelNo;
+namespace zongphp\kernel\modelNo;
 
 class RedisDriver {
 

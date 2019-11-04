@@ -1,10 +1,10 @@
 <?php
 
-namespace dux\com;
+namespace zongphp\com;
 /**
  * 路由器
  * Class Rotue
- * @package dux\com
+ * @package zongphp\com
  * @source https://github.com/nikic/FastRoute
  */
 class Rotue {
@@ -23,7 +23,7 @@ class Rotue {
      * @param string $method
      * @param string $url
      * @param string $module
-     * @throws \dux\exception\Exception
+     * @throws \zongphp\exception\Exception
      */
     public function add(string $method, string $roule, string $module) {
         $method = strtoupper($method);
@@ -126,7 +126,7 @@ class Rotue {
     private function parsingModule(string $url, string $cacheKey, bool $role = true) {
         $urlData = ['default_layer' => '', 'role' => '', 'layer' => '', 'app' => '', 'module' => '', 'action' => ''];
         $urlArray = explode("/", trim($url, '/'), 4);
-        $moduleConfig = \dux\Config::get('dux.module');
+        $moduleConfig = \zongphp\Config::get('zong.module');
         $moduleRule = array_flip($moduleConfig);
         $urlArray[0] = $role ? $urlArray[0] : $moduleConfig[$urlArray[0]];
 
@@ -141,8 +141,8 @@ class Rotue {
             $urlData['module'] = $urlArray[1];
             $urlData['action'] = $urlArray[2];
         }
-        $urlData['default_layer'] = \dux\Config::get('dux.module_default');
-        $urlData['layer'] = $urlData['layer'] ?: \dux\Config::get('dux.module_default');
+        $urlData['default_layer'] = \zongphp\Config::get('zong.module_default');
+        $urlData['layer'] = $urlData['layer'] ?: \zongphp\Config::get('zong.module_default');
         $urlData['app'] = strtolower($urlData['app'] ?: 'index');
         $urlData['module'] = ucfirst($urlData['module'] ?: 'Index');
         $urlData['action'] = $urlData['action'] ?: 'index';
@@ -214,7 +214,7 @@ class Rotue {
         $param = explode('/', $str, 4);
         $param = array_filter($param);
         $paramCount = count($param);
-        $module = \dux\Config::get('dux.module');
+        $module = \zongphp\Config::get('zong.module');
         switch ($paramCount) {
             case 1:
                 $layer = LAYER_NAME;
@@ -287,14 +287,14 @@ class Rotue {
 
     /**
      * 获取缓存对象
-     * @return \dux\com\Cache
+     * @return \zongphp\com\Cache
      * @throws \Exception
      */
     public function cache() {
         if ($this->object) {
             return $this->object;
         }
-        $this->object = \dux\Dux::cache();
+        $this->object = \zongphp\App::cache();
         return $this->object;
     }
 }

@@ -2,11 +2,9 @@
 
 /**
  * mysqlpdo数据库驱动
- *
- * @author Mr.L <admin@duxphp.com>
  */
 
-namespace dux\kernel\model;
+namespace zongphp\kernel\model;
 
 use PDO;
 
@@ -124,8 +122,8 @@ class MysqlPdoDriver implements DbInterface {
         $time = microtime();
         $result = $sth->execute();
         $endTime = microtime();
-        if (!IS_CLI && \dux\Config::get('dux.debug_sql')) {
-            \dux\Engine::$sqls[] = [
+        if (!IS_CLI && \zongphp\Config::get('zong.debug_sql')) {
+            \zongphp\Engine::$sqls[] = [
                 'sql' => $sqlStr,
                 'time' => round($endTime - $time, 2),
             ];

@@ -1,6 +1,6 @@
 <?php
 
-namespace dux;
+namespace zongphp;
 
 error_reporting(E_ALL ^ E_NOTICE);
 ini_set('display_errors', '1');
@@ -93,7 +93,7 @@ class Start {
         if (!defined('ROOT_PATH')) {
             exit('Please define ROOT_PATH constants');
         }
-        if (!defined('VERSION')) define('VERSION', '2.0.0 dev');
+        if (!defined('VERSION')) define('VERSION', '2.1.0 dev');
         if (!defined('VERSION_DATE')) define('VERSION_DATE', '20191015');
         if (!defined('URL')) define('URL', $_SERVER['REQUEST_URI']);
         if (!defined('METHOD')) define('METHOD', $_SERVER['REQUEST_METHOD']);
@@ -128,7 +128,7 @@ class Start {
     protected static function loadConfig() {
         $file = DATA_PATH . 'config/global.php';
         if (is_file($file)) {
-            \dux\Config::set(\dux\Config::load($file));
+            \zongphp\Config::set(\zongphp\Config::load($file));
         }
     }
 
@@ -156,9 +156,9 @@ class Start {
      */
     protected static function start() {
         if (strtolower($_SERVER['REQUEST_METHOD']) == 'options') {
-            Dux::header(204);
+            App::header(204);
         }
-        (new \dux\Engine())->run();
+        (new \zongphp\Engine())->run();
     }
 
 }

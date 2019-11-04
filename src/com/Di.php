@@ -1,9 +1,9 @@
 <?php
 
-namespace dux\com;
+namespace zongphp\com;
 /**
  * 依赖注入
- * @package dux
+ * @package zongphp
  */
 class Di {
 

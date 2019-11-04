@@ -4,7 +4,7 @@
  * 文件存储
  */
 
-namespace dux\com\log;
+namespace zongphp\com\log;
 
 class MongoDriver implements LogInterface {
 
@@ -68,7 +68,7 @@ class MongoDriver implements LogInterface {
     }
 
     public function getObj() {
-        return (new \dux\kernel\modelNo('default', $this->config))->setParams([
+        return (new \zongphp\kernel\modelNo('default', $this->config))->setParams([
             'time' => [
                 'type' => 'string',
             ],

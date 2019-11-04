@@ -1,11 +1,9 @@
 <?php
 
-namespace dux\com;
+namespace zongphp\com;
 
 /**
  * 缓存类
- *
- * @author Mr.L <admin@duxphp.com>
  */
 class Cache {
 

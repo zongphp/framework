@@ -5,7 +5,7 @@
  * @author: TS
  */
 
-namespace dux\kernel\modelNo;
+namespace zongphp\kernel\modelNo;
 
 class MongoDriver {
 

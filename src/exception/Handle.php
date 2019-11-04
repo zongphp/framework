@@ -3,7 +3,7 @@
  * 异常处理
  */
 
-namespace dux\Exception;
+namespace zongphp\Exception;
 
 class Handle {
 
@@ -54,14 +54,14 @@ class Handle {
             ];
         }
         if ($this->log) {
-            \dux\Dux::log($title . ' ' . $desc);
+            \zongphp\App::log($title . ' ' . $desc);
         }
         if (IS_CLI) {
             return "error: {$title} : {$desc}";
         }
         if (isAjax()) {
             if (!$this->debug) {
-                $title = \dux\Dux::$codes[$code];
+                $title = \zongphp\App::$codes[$code];
             }
             $data = [
                 'code' => $code,
@@ -69,7 +69,7 @@ class Handle {
                 'line' => $desc,
                 'trace' => $trace,
             ];
-            \dux\Dux::header($code, function () use ($data) {
+            \zongphp\App::header($code, function () use ($data) {
                 return json_encode($data);
             }, [
                 'Content-Type' => 'application/json; charset=UTF-8'
@@ -127,7 +127,7 @@ class Handle {
                 }
                 $html[] = "</ul>";
             }
-            $html[] = "<footer>DuxPHP " . VERSION . ", run time " . \dux\Dux::runTime() . "s</footer>";
+            $html[] = "<footer>ZongPHP " . VERSION . ", run time " . \zongphp\App::runTime() . "s</footer>";
             $html[] = "</main>";
             $html = implode(PHP_EOL, $html);
         } else {

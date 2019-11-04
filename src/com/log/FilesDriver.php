@@ -4,7 +4,7 @@
  * 文件存储
  */
 
-namespace dux\com\log;
+namespace zongphp\com\log;
 
 class FilesDriver implements LogInterface {
 

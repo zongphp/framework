@@ -1,6 +1,6 @@
 <?php
 
-namespace dux;
+namespace zongphp;
 /**
  * 配置参数
  * @package dux
@@ -8,7 +8,7 @@ namespace dux;
 class Config {
 
     protected static $config = [
-        'dux' => [
+        'zong' => [
             'module_default' => 'controller',
             'module' => [
                 'controller' => 'c',
@@ -94,7 +94,7 @@ class Config {
     public static function load($config, $string = false) {
         if (!$string) {
             if (!is_file($config)) {
-                throw new \dux\exception\Exception("Config file '{$config}' not found");
+                throw new \zongphp\exception\Exception("Config file '{$config}' not found");
             }
             $config = file_get_contents($config);
         }
@@ -105,13 +105,13 @@ class Config {
         try {
             $data = eval($config);
         } catch (\Exception $e) {
-            throw new \dux\exception\Exception("PHP string threw an exception");
+            throw new \zongphp\exception\Exception("PHP string threw an exception");
         }
         if (is_callable($data)) {
             $data = call_user_func($data);
         }
         if (!is_array($data)) {
-            throw new \dux\exception\Exception("PHP data does not return an array");
+            throw new \zongphp\exception\Exception("PHP data does not return an array");
         }
         return $data;
     }
@@ -129,11 +129,11 @@ class Config {
             try {
                 mkdir($path, 0777, true);
             } catch (\Exception $e) {
-                throw new \dux\exception\Exception("Directory [{$path['dirname']}] without permission");
+                throw new \zongphp\exception\Exception("Directory [{$path['dirname']}] without permission");
             }
         }
         if (!file_put_contents($file, $export)) {
-            throw new \dux\exception\Exception("Configuration file [{$file}] written to fail");
+            throw new \zongphp\exception\Exception("Configuration file [{$file}] written to fail");
         }
         return true;
     }

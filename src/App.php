@@ -1,11 +1,11 @@
 <?php
 
-namespace dux;
+namespace zongphp;
 
 /**
  * 注册框架方法
  */
-class Dux {
+class App {
 
     /**
      * 注入对象
@@ -19,7 +19,7 @@ class Dux {
      */
     public static function di() {
         if (!isset(self::$di)) {
-            self::$di = new \dux\com\Di();
+            self::$di = new \zongphp\com\Di();
         }
         return self::$di;
     }
@@ -29,10 +29,10 @@ class Dux {
      * @return object
      */
     public static function route() {
-        $key = 'dux.route';
+        $key = 'zong.route';
         if (!self::di()->has($key)) {
             self::di()->set($key, function () {
-                return new \dux\com\Rotue();
+                return new \zongphp\com\Rotue();
             });
         }
         return self::di()->get($key);
@@ -44,11 +44,11 @@ class Dux {
      * @return object
      */
     public static function view() {
-        $config = \dux\Config::get('dux.tpl');
-        $key = 'dux.tpl' . http_build_query($config);
+        $config = \zongphp\Config::get('zong.tpl');
+        $key = 'zong.tpl' . http_build_query($config);
         if (!self::di()->has($key)) {
             self::di()->set($key, function () use ($config) {
-                return new \dux\kernel\View($config);
+                return new \zongphp\kernel\View($config);
             });
         }
         return self::di()->get($key);
@@ -62,12 +62,12 @@ class Dux {
      */
     public static function cache(string $group = 'default', array $config = []) {
         if (empty($config)) {
-            $config = \dux\Config::get('dux.cache');
+            $config = \zongphp\Config::get('zong.cache');
         }
-        $key = 'dux.cache.' . $group . '.' . http_build_query($config);
+        $key = 'zong.cache.' . $group . '.' . http_build_query($config);
         if (!self::di()->has($key)) {
             self::di()->set($key, function () use ($config, $group) {
-                return new \dux\com\Cache($config, $group);
+                return new \zongphp\com\Cache($config, $group);
             });
         }
         return self::di()->get($key);
@@ -81,12 +81,12 @@ class Dux {
      */
     public static function session(string $pre = '', array $config = []) {
         if (empty($config)) {
-            $config = \dux\Config::get('dux.session');
+            $config = \zongphp\Config::get('zong.session');
         }
-        $key = 'dux.session.' . $pre . http_build_query($config);
+        $key = 'zong.session.' . $pre . http_build_query($config);
         if (!self::di()->has($key)) {
             self::di()->set($key, function () use ($config, $pre) {
-                return new \dux\lib\Session($config, $pre);
+                return new \zongphp\lib\Session($config, $pre);
             });
         }
         return self::di()->get($key);
@@ -222,10 +222,10 @@ class Dux {
     public static function loadConfig(string $file, bool $enforce = true) {
         $file = ROOT_PATH . $file . '.php';
         try {
-            $data = \dux\Config::load($file);
-        } catch (\dux\exception\Exception $e) {
+            $data = \zongphp\Config::load($file);
+        } catch (\zongphp\exception\Exception $e) {
             if ($enforce) {
-                throw new \dux\exception\Exception($e->getMessage());
+                throw new \zongphp\exception\Exception($e->getMessage());
             }
         }
         return $data;
@@ -241,7 +241,7 @@ class Dux {
      */
     public static function saveConfig(string $file, array $config) {
         $file = ROOT_PATH . $file . '.php';
-        return \dux\Config::save($file, $config);
+        return \zongphp\Config::save($file, $config);
     }
 
     /**
@@ -339,7 +339,7 @@ class Dux {
      */
     public static function notFound() {
         if (!IS_CLI) {
-            new \dux\exception\Error('404 Not Found', 404);
+            new \zongphp\exception\Error('404 Not Found', 404);
         } else {
             exit('The request does not exist');
         }
@@ -352,7 +352,7 @@ class Dux {
      */
     public static function errorPage(string $title, int $code = 503) {
         if (!IS_CLI) {
-            new \dux\exception\Error($title, $code);
+            new \zongphp\exception\Error($title, $code);
         } else {
             exit($title);
         }
@@ -387,11 +387,11 @@ class Dux {
      * @return object
      */
     public static function logObj() {
-        $driver = \dux\Config::get('dux.log');
-        $keyName = 'dux.log.' . $driver;
+        $driver = \zongphp\Config::get('zong.log');
+        $keyName = 'zong.log.' . $driver;
         if (!self::di()->has($keyName)) {
             self::di()->set($keyName, function () use ($driver) {
-                return new \dux\com\Log($driver);
+                return new \zongphp\com\Log($driver);
             });
         }
         return self::di()->get($keyName);

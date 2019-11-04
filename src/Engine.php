@@ -1,6 +1,6 @@
 <?php
 
-namespace dux;
+namespace zongphp;
 
 class Engine {
 
@@ -64,7 +64,7 @@ class Engine {
      */
     public function handleError($error, $message, $file, $line) {
         if ($error & error_reporting()) {
-            new \dux\exception\Handle($message, 500, $file, $line, [], \dux\Config::get('dux.debug'), false, \dux\Config::get('dux.log'));
+            new \zongphp\exception\Handle($message, 500, $file, $line, [], \zongphp\Config::get('zong.debug'), false, \zongphp\Config::get('zong.log'));
         }
     }
 
@@ -73,14 +73,14 @@ class Engine {
      * @param $e
      */
     public function handleException($e) {
-        new \dux\exception\Handle($e->getMessage(), $e->getCode(), $e->getFile(), $e->getLine(), $e->getTrace(), \dux\Config::get('dux.debug'), false, \dux\Config::get('dux.log'));
+        new \zongphp\exception\Handle($e->getMessage(), $e->getCode(), $e->getFile(), $e->getLine(), $e->getTrace(), \zongphp\Config::get('zong.debug'), false, \zongphp\Config::get('zong.log'));
     }
 
     /**
      * 解析路由
      */
     public function route() {
-        $routes = \dux\Config::get('dux.route');
+        $routes = \zongphp\Config::get('zong.route');
         foreach ($routes as $module => $rule) {
             if (empty($module)) {
                 continue;
@@ -93,7 +93,7 @@ class Engine {
             if (empty($method) || empty($url)) {
                 continue;
             }
-            \dux\Dux::route()->add($method, $url, $module);
+            \zongphp\App::route()->add($method, $url, $module);
         }
         if (IS_CLI) {
             $params = getopt('u:');
@@ -101,7 +101,7 @@ class Engine {
         } else {
             $url = URL;
         }
-        $data = \dux\Dux::route()->dispatch($_SERVER['REQUEST_METHOD'], $url);
+        $data = \zongphp\App::route()->dispatch($_SERVER['REQUEST_METHOD'], $url);
         if (!defined('DEFAULT_LAYER_NAME')) {
             define('DEFAULT_LAYER_NAME', $data['default_layer']);
         }
@@ -128,15 +128,15 @@ class Engine {
      */
     public function run() {
         if (IS_CLI && (!APP_NAME || !LAYER_NAME || !MODULE_NAME || !ACTION_NAME)) {
-            exit('dux cli start');
+            exit('zz cli start');
         }
         $class = '\app\\' . APP_NAME . '\\' . LAYER_NAME . '\\' . MODULE_NAME . ucfirst(LAYER_NAME);
         $action = ACTION_NAME;
         if (!class_exists($class)) {
-            \dux\Dux::notFound();
+            \zongphp\App::notFound();
         }
         if (!method_exists($class, $action) && !method_exists($class, '__call')) {
-            \dux\Dux::notFound();
+            \zongphp\App::notFound();
         }
         (new $class())->$action();
     }

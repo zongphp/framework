@@ -3,11 +3,11 @@
  * 异常处理
  */
 
-namespace dux\exception;
+namespace zongphp\exception;
 
 class Error extends \ErrorException {
 
     public function __construct($message, $code = 0) {
-        new \dux\exception\Handle($message, $code, $this->getFile(), $this->getLine(), $this->getTrace(), false, true, false);
+        new \zongphp\exception\Handle($message, $code, $this->getFile(), $this->getLine(), $this->getTrace(), false, true, false);
     }
 }

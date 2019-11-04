@@ -4,7 +4,7 @@
  * 公共Nosql模型
  */
 
-namespace dux\kernel;
+namespace zongphp\kernel;
 
 class ModelNo {
 
@@ -26,7 +26,7 @@ class ModelNo {
         if ($database) {
             $this->database = $database;
         }
-        $sysConfig = \dux\Config::get('dux.database_no');
+        $sysConfig = \zongphp\Config::get('zong.database_no');
         $this->config = array_merge((array)$sysConfig[$this->database], (array)$this->config, $config);
         if (empty($this->config) || empty($this->config['type'])) {
             throw new \Exception($this->config['type'] . ' database config error', 500);
@@ -245,7 +245,7 @@ class ModelNo {
     }
 
     public function getObj() {
-        $key = 'dux.rdm.' . md5(http_build_query($this->config));
+        $key = 'zong.rdm.' . md5(http_build_query($this->config));
         if (!di()->has($key)) {
             $class = __NAMESPACE__ . '\modelNo\\' . ucfirst($this->config['type']) . 'Driver';
             di()->set($key, function () use ($class) {

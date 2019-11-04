@@ -4,7 +4,7 @@
  * 公共控制器
  */
 
-namespace dux\kernel;
+namespace zongphp\kernel;
 
 class Controller {
 
@@ -54,7 +54,7 @@ class Controller {
      */
     protected function _getView() {
         if (!isset($this->view)) {
-            $this->view = \dux\Dux::view();
+            $this->view = \zongphp\App::view();
         }
         return $this->view;
     }
@@ -79,13 +79,13 @@ class Controller {
     public function json($data = [], $callback = '', $code = 200) {
         if ($callback) {
             $info = ['data' => $data, 'callback' => $callback];
-            \dux\Dux::header($code, function() use ($info) {
+            \zongphp\App::header($code, function() use ($info) {
                 echo $info['callback'] . '(' . json_encode($info['data']) . ');';
             }, [
                 'Content-Type' => 'application/javascript;charset=utf-8;'
             ]);
         } else {
-            \dux\Dux::header($code, function() use ($data) {
+            \zongphp\App::header($code, function() use ($data) {
                 echo json_encode($data);
             }, [
                 'Content-Type' => 'application/json;charset=utf-8;'
@@ -102,7 +102,7 @@ class Controller {
         if (isAjax()) {
             $data = [
                 'code' => 200,
-                'message' => $msg,
+                'msg' => $msg,
                 'url' => $url
             ];
             $this->json($data);
@@ -121,7 +121,7 @@ class Controller {
         if (isAjax()) {
             $data = [
                 'code' => $code,
-                'message' => $msg,
+                'msg' => $msg,
                 'url' => $url
             ];
             $this->json($data, '', $code);
@@ -134,7 +134,7 @@ class Controller {
      * 404页面输出
      */
     public function error404() {
-        \dux\Dux::notFound();
+        \zongphp\App::notFound();
     }
 
 
@@ -145,7 +145,7 @@ class Controller {
      * @param $code
      */
     protected function errorPage($title, $content, $code = 503) {
-        \dux\Dux::errorPage($title, $content, $code);
+        \zongphp\App::errorPage($title, $content, $code);
     }
 
     /**
@@ -156,7 +156,7 @@ class Controller {
      * @return void
      */
     public function alert($msg, $url = NULL, $charset = 'utf-8') {
-        \dux\Dux::header(200, function () use ($msg, $url) {
+        \zongphp\App::header(200, function () use ($msg, $url) {
             $alert_msg = "alert('$msg');";
             if (empty($url)) {
                 $go_url = 'history.go(-1);';

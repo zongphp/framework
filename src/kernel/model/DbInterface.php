@@ -3,10 +3,9 @@
 /**
  * 数据库驱动接口
  *
- * @author Mr.L <admin@duxphp.com>
  */
 
-namespace dux\kernel\model;
+namespace zongphp\kernel\model;
 
 interface DbInterface {
 
