@@ -4,7 +4,7 @@
  * 图像处理类
  */
 
-namespace dux\lib;
+namespace zongphp\library;
 
 class Image {
 
@@ -59,13 +59,13 @@ class Image {
         switch ($type) {
             // 居中裁剪缩放
             case 'center':
-                $this->imgObj->fit($width, $height, function () {
+                $this->imgObj->fit($width, $height, function ($constraint) {
                     $constraint->upsize();
                 }, 'center');
                 break;
             // 固定尺寸
             case 'fixed':
-                $this->imgObj->resize(300, 200, function () {
+                $this->imgObj->resize(300, 200, function ($constraint) {
                     $constraint->upsize();
                 });
                 break;

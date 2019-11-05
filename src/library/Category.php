@@ -3,7 +3,7 @@
 /**
  * 无限分类
  */
-namespace dux\lib;
+namespace zongphp\library;
 
 class Category {
 

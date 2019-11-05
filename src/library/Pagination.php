@@ -1,6 +1,6 @@
 <?php
 
-namespace dux\lib;
+namespace zongphp\library;
 
 /**
  * 分页类

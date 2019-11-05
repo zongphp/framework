@@ -1,11 +1,10 @@
 <?php
 
-namespace dux\lib;
+namespace zongphp\library;
 
 /**
  * 验证过滤类
  *
- * @author  Mr.L <admin@duxphp.com>
  */
 
 class Filter {
@@ -20,7 +19,7 @@ class Filter {
      * 数据验证
      * @param array $data
      * @param array $rules
-     * @throws \dux\exception\Error
+     * @throws \zongphp\exception\Error
      */
     public static function verifyArray($data = [], $rules = []) {
         /*$data = [
@@ -32,10 +31,10 @@ class Filter {
             foreach ($rule as $method => $ruleArray) {
                 list($desc, $params) = $ruleArray;
                 if (!method_exists(self::verify(), $method)) {
-                    throw new \dux\exception\Error("Validation rules does not exist！");
+                    throw new \zongphp\exception\Error("Validation rules does not exist！");
                 }
                 if (!self::verify()->$method($data[$field], $params)) {
-                    throw new \dux\exception\Error($desc);
+                    throw new \zongphp\exception\Error($desc);
                 }
             }
         }
@@ -46,7 +45,7 @@ class Filter {
      * @param array $data
      * @param array $rules
      * @return array
-     * @throws \dux\exception\Error
+     * @throws \zongphp\exception\Error
      */
     public static function filterArray($data = [], $rules = []) {
         /*$data = [
@@ -58,7 +57,7 @@ class Filter {
         foreach ($rules as $field => $rule) {
             foreach ($rule as $method => $params) {
                 if (!method_exists(self::filter(), $method)) {
-                    throw new \dux\exception\Error("Validation rules does not exist！");
+                    throw new \zongphp\exception\Error("Validation rules does not exist！");
                 }
                 $tmpData[$field] = self::filter()->$method($data[$field], $params);
             }

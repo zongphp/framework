@@ -1,10 +1,9 @@
 <?php
 
-namespace dux\lib;
+namespace zongphp\library;
 
 /**
  * Session会话类
- * @author Mr.L <admin@duxphp.com>
  */
 
 class Session {
@@ -103,7 +102,7 @@ class Session {
             }
             return (string)$data;
         } catch (\Exception $e) {
-            dux_log($e->getMessage());
+            zong_log($e->getMessage());
             return '';
         }
     }
@@ -119,7 +118,7 @@ class Session {
             $this->cache()->set($this->pre . $sessionId, json_encode($sessionData), $this->time);
             return true;
         } catch (\Exception $e) {
-            dux_log($e->getMessage());
+            zong_log($e->getMessage());
             return false;
         }
     }
@@ -150,14 +149,14 @@ class Session {
 
     /**
      * 获取缓存对象
-     * @return \dux\com\Cache
+     * @return \zongphp\com\Cache
      * @throws \Exception
      */
     public function cache() {
         if ($this->object) {
             return $this->object;
         }
-        $this->object = \dux\Dux::cache('session', $this->config);
+        $this->object = \zongphp\App::cache('session', $this->config);
         return $this->object;
     }
 }

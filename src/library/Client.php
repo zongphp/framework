@@ -1,6 +1,6 @@
 <?php
 
-namespace dux\lib;
+namespace zongphp\library;
 /**
  * 客户端应用类
  */

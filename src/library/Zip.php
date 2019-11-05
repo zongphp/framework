@@ -4,7 +4,7 @@
  * ZIP压缩与解压
  */
 
-namespace dux\lib;
+namespace zongphp\library;
 
 class Zip
 {

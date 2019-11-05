@@ -4,7 +4,7 @@
  * HTTP访问类
  */
 
-namespace dux\lib;
+namespace zongphp\library;
 
 
 use Symfony\Component\Cache\Adapter\TraceableAdapter;
@@ -138,7 +138,7 @@ class Http {
      * @return mixed
      */
     static public function getObj() {
-        $class = 'dux.guzzle';
+        $class = 'zong.guzzle';
         if (!di()->has($class)) {
             di()->set($class, '\GuzzleHttp\Client');
         }

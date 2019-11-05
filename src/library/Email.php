@@ -4,7 +4,7 @@
 * 邮件发送类
 */
 
-namespace dux\lib;
+namespace zongphp\library;
 
 require_once __DIR__ . '/phpmailer/class.phpmailer.php';
 require_once __DIR__ . '/phpmailer/class.smtp.php';

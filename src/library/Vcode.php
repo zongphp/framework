@@ -1,10 +1,9 @@
 <?php
 
-namespace dux\lib;
+namespace zongphp\library;
 
 /**
  * Session会话类
- * @author Mr.L <admin@duxphp.com>
  */
 class Vcode {
 
@@ -93,13 +92,13 @@ class Vcode {
         if ($this->cacheObject) {
             return $this->cacheObject;
         }
-        $this->cacheObject = \dux\Dux::cache('vcode', $this->config);
+        $this->cacheObject = \zongphp\App::cache('vcode', $this->config);
         return $this->cacheObject;
     }
 
     /**
      * 获取验证码对象
-     * @return \dux\com\Cache
+     * @return \zongphp\com\Cache
      * @throws \Exception
      */
     public function getObj() {
