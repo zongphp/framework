@@ -1,23 +1,26 @@
 {
-    "name": "zongphp/framework",
-    "description": "ZongPHP Framework",
-    "authors": [
-        {
-            "name": "ZongPHP",
-            "email": "zmingzhi@yeah.net"
-        }
-    ],
-    "require": {
-        "php": ">=7.0"
-    },
-    "autoload": {
-        "psr-4": {
-            "zongphp\\": "src/"
-        }
-    },
-    "keywords": [
-        "zongphp"
-    ],
-    "homepage": "http://zongphp.com/",
-    "license": "Apache-2.0"
+  "name": "zongphp/framework",
+  "description": "ZongPHP Framework",
+  "authors": [
+      {
+          "name": "ZongPHP",
+          "email": "zmingzhi@yeah.net"
+      }
+  ],
+  "require": {
+      "php": ">=7.0"
+  },
+  "autoload": {
+      "files": [
+        "src/helper.php"
+      ],
+      "psr-4": {
+          "zongphp\\": "src/"
+      }
+  },
+  "keywords": [
+      "zongphp"
+  ],
+  "homepage": "http://zongphp.com/",
+  "license": "Apache-2.0"
 }
