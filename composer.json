@@ -1,56 +1,29 @@
 {
   "name": "zongphp/framework",
-  "description": "Zongphp Framework (Kernel)",
-  "license": "MIT",
-  "type": "project",
-  "minimum-stability": "stable",
+  "description": "ZongPHP Framework",
+  "authors": [
+      {
+          "name": "ZongPHP",
+          "email": "zmingzhi@yeah.net"
+      }
+  ],
   "require": {
-    "php": ">=5.4.0",
-    "zongphp/arr": "~1.0",
-    "zongphp/backup": "~1.0",
-    "zongphp/cache": "~1.0",
-    "zongphp/cli": "~1.0",
-    "zongphp/code": "~1.0",
-    "zongphp/collection": "~1.0",
-    "zongphp/config": "~1.0",
-    "zongphp/container": "~1.0",
-    "zongphp/controller": "~1.0",
-    "zongphp/cookie": "~1.0",
-    "zongphp/crypt": "~1.0",
-    "zongphp/curl": "~1.0",
-    "zongphp/database": "~1.0",
-    "zongphp/db": "~1.0",
-    "zongphp/dir": "~1.0",
-    "zongphp/error": "~1.0",
-    "zongphp/file": "~1.0",
-    "zongphp/html": "~1.0",
-    "zongphp/image": "~1.0",
-    "zongphp/lang": "~1.0",
-    "zongphp/log": "~1.0",
-    "zongphp/mail": "~1.0",
-    "zongphp/middleware": "~1.0",
-    "zongphp/model": "~1.0",
-    "zongphp/page": "~1.0",
-    "zongphp/rbac": "~1.0",
-    "zongphp/request": "~1.0",
-    "zongphp/response": "~1.0",
-    "zongphp/route": "~1.0",
-    "zongphp/session": "~1.0",
-    "zongphp/str": "~1.0",
-    "zongphp/tool": "~1.0",
-    "zongphp/validate": "~1.0",
-    "zongphp/view": "~1.0",
-    "zongphp/xml": "~1.0",
-    "zongphp/zip": "~1.0",
-    "zongphp/loader": "~1.0",
-    "zongphp/tree": "~1.0"
+      "php": ">=7.0",
+      "workerman/gateway-worker": "^3.0",
+      "aliyuncs/oss-sdk-php": "~2.0",
+      "bacon/bacon-qr-code": "^1.0"
   },
   "autoload": {
-    "files": [
-      "src/helper.php"
-    ],
-    "psr-4": {
-      "zongphp\\framework\\": "src"
-    }
-  }
+      "files": [
+        "src/helper.php"
+      ],
+      "psr-4": {
+          "zongphp\\": "src/"
+      }
+  },
+  "keywords": [
+      "zongphp"
+  ],
+  "homepage": "http://zongphp.com/",
+  "license": "Apache-2.0"
 }
