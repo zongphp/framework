@@ -37,7 +37,7 @@
 	  "src/view/helper.php"
     ],
     "psr-4": {
-      "zongphp\\framework\\": "src"
+      "zongphp\\": "src"
     }
   }
 }
