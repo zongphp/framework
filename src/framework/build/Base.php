@@ -38,7 +38,7 @@ class Base extends \zongphp\container\build\Base {
 	//定义常量
 	protected function constant() {
 		//根目录即Vendor同级目录
-		define( 'ROOT_PATH', realpath( dirname( __DIR__ ) . '/../../../..' ) );
+		define( 'ROOT_PATH', realpath( dirname( __DIR__ ) . '/../../../../..' ) );
 		$_SERVER['SCRIPT_NAME'] = str_replace( '\\', '/', $_SERVER['SCRIPT_NAME'] );
 		//根URL地址
 		define( '__ROOT__', PHP_SAPI == 'cli' ? '' : trim( 'http://' . $_SERVER['HTTP_HOST'] . dirname( $_SERVER['SCRIPT_NAME'] ), '/\\' ) );
