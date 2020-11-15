@@ -108,6 +108,10 @@ class Base extends VaAction {
 						View::with( 'errors', $errors );
 						echo View::make( Config::get( 'validate.template' ) )->toString();
 						exit;
+					case 'api':
+						$res = [ 'code' => 0, 'msg' => implode('<br>',$errors) ];
+						die( json_encode( $res, JSON_UNESCAPED_UNICODE ) );
+						exit;
 					case 'default':
 						return false;
 						break;

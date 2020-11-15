@@ -37,6 +37,7 @@ class File implements InterfaceCache {
 
 	//设置
 	public function set( $name, $data, $expire = 3600 ) {
+		$name = $this->getCacheKey($name);
 		$file = $this->getFile( $name );
 		//缓存时间
 		$expire = sprintf( "%010d", $expire );
@@ -47,6 +48,7 @@ class File implements InterfaceCache {
 
 	//获取
 	public function get( $name ) {
+		$name = $this->getCacheKey($name);
 		$file = $this->getFile( $name );
 		//缓存文件不存在
 		if ( ! is_file( $file ) || ! is_readable( $file ) ) {
@@ -69,6 +71,7 @@ class File implements InterfaceCache {
 
 	//删除
 	public function del( $name ) {
+		$name = $this->getCacheKey($name);
 		$file = $this->getFile( $name );
 
 		return Dir::delFile( $file );
@@ -78,4 +81,14 @@ class File implements InterfaceCache {
 	public function flush() {
 		return Dir::del( $this->dir );
 	}
+
+	/**
+     * 获取实际的缓存标识
+     * @access protected
+     * @param  string $name 缓存名
+     * @return string
+     */
+    protected function getCacheKey($name){
+        return Config::get('cache.prefix').$name;
+    }
 }

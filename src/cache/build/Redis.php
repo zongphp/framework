@@ -15,14 +15,11 @@ class Redis implements InterfaceCache {
 	//连接
 	public function connect() {
 		$conf       = Config::get( 'cache.redis' );
-		// $this->link = new \Redis;
-		// if ( $this->link->connect( $conf['host'], $conf['port'] ) ) {
-			// throw new Exception( "Redis 连接失败" );
-		// }
+
 		if ( $this->link = new \Redis ) {
 			$this->link->connect( $conf['host'], $conf['port'] );
 		} else {
-			throw new Exception( "Memcache 连接失败" );
+			throw new Exception( "Redis 连接失败" );
 		}
 		$this->link->auth( $conf['password'] );
 		$this->link->select( $conf['database'] );
@@ -30,19 +27,25 @@ class Redis implements InterfaceCache {
 
 	//设置
 	public function set( $name, $value, $expire = 3600 ) {
-		if ( $this->link->set( $name, $value ) ) {
-			return $this->link->expire( $name, $expire );
+		$name = $this->getCacheKey($name);
+		$value = serialize($value);
+		if($expire){
+			return $this->link->setex($name, $expire, $value);
+		}else{
+			return $this->link->set( $name, $value );
 		}
 	}
 
 	//获得
 	public function get( $name ) {
-		return $this->link->get( $name );
+		$name = $this->getCacheKey($name);
+		return unserialize($this->link->get( $name ));
 	}
 
 	//删除
 	public function del( $name ) {
-		return $this->link->del( $name );
+		$name = $this->getCacheKey($name);
+		return $this->link->delete( $name );
 	}
 
 	//清空缓存池
@@ -54,4 +57,14 @@ class Redis implements InterfaceCache {
 	public function flush() {
 
 	}
+
+	/**
+     * 获取实际的缓存标识
+     * @access protected
+     * @param  string $name 缓存名
+     * @return string
+     */
+    protected function getCacheKey($name){
+        return 'cache#'.md5(Config::get('cache.prefix').$name);
+    }
 }

@@ -4,6 +4,7 @@ namespace zongphp\error\build;
 //错误处理
 use zongphp\config\Config;
 use zongphp\log\Log;
+use zongphp\container\Container;
 
 class Base {
 	//关闭DEBUG时的错误显示页面
@@ -24,6 +25,11 @@ class Base {
 		if ( PHP_SAPI == 'cli' ) {
 			die( PHP_EOL . "\033[;36m " . $e->getMessage() . "\x1B[0m\n" . PHP_EOL );;
 		} else {
+			$class = Config::get( 'app.exception_handle' );
+			if ( class_exists( $class ) && method_exists( $class, 'handle' ) ) {
+				$handle = new $class;
+				return $handle->handle($e);
+			}
 			if ( Config::get( 'error.debug' ) == true ) {
 				require __DIR__ . '/../view/exception.php';
 			} else {
